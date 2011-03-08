@@ -1,0 +1,2 @@
+This is sample application displaying something from kinect. I hope that this project evolve into something more sophisticated ;]
+Currently this application displaying only rgb video, which is received from kinect (i don't have kinect so i test it with fakenect).
