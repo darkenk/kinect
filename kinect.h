@@ -18,6 +18,8 @@ public:
     static void depth_cb(freenect_device *dev, void *v_depth, uint32_t timestamp);
 
 
+
+    void setLedColor(freenect_led_options ledColor);
     uint8_t* videoBuffer();
     uint8_t* depthBuffer();
 

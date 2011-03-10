@@ -23,6 +23,8 @@ private slots:
 
     void on_captureButton_clicked();
 
+    void on_ledComboBox_currentIndexChanged(int index);
+
 private:
     Ui::MainWindow *ui;
     WidgetGL* m_glwidget;

@@ -35,6 +35,17 @@ Kinect::~Kinect()
 {
     freenect_close_device(m_dev);
     freenect_shutdown(m_ctx);
+
+    delete m_backVideoBuffer;
+    delete m_midVideoBuffer;
+    delete m_frontVideoBuffer;
+    delete m_midDepth;
+}
+
+
+void Kinect::setLedColor(freenect_led_options ledColor)
+{
+    freenect_set_led(m_dev, ledColor);
 }
 
 uint8_t* Kinect::videoBuffer()
@@ -124,8 +135,6 @@ void Kinect::run()
 
     freenect_stop_depth(m_dev);
     freenect_stop_video(m_dev);
-
-
 }
 
 
