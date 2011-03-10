@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1029</width>
-    <height>512</height>
+    <width>1280</width>
+    <height>640</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1280</width>
+    <height>640</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1280</width>
+    <height>640</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -19,23 +31,23 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1021</width>
-      <height>431</height>
+      <width>1281</width>
+      <height>541</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout"/>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="captureButton">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>430</y>
-      <width>1021</width>
+      <y>550</y>
+      <width>1271</width>
       <height>28</height>
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Capture</string>
     </property>
    </widget>
   </widget>
@@ -44,7 +56,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1029</width>
+     <width>1280</width>
      <height>25</height>
     </rect>
    </property>

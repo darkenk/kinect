@@ -27,6 +27,8 @@ Kinect::Kinect(QObject *parent) :
     m_midVideoBuffer = new uint8_t[640*480*3];
     m_frontVideoBuffer = new uint8_t[640*480*3];
 
+    m_midDepth = new uint8_t[640*480*3];
+
 }
 
 Kinect::~Kinect()
@@ -41,20 +43,34 @@ uint8_t* Kinect::videoBuffer()
     return m_midVideoBuffer;
 }
 
+uint8_t* Kinect::depthBuffer()
+{
+    QMutexLocker locker(&m_mutex);
+    return m_midDepth;
+}
+
 void Kinect::videoCallback(freenect_device *dev, void *rgb, uint32_t timestamp)
 {
-    qDebug() << Q_FUNC_INFO;
+    //qDebug() << Q_FUNC_INFO;
     QMutexLocker locker (&m_mutex);
-
-    // swap buffers
-    //assert (rgb_back == rgb);
     m_backVideoBuffer = m_midVideoBuffer;
     freenect_set_video_buffer(dev, m_backVideoBuffer);
     m_midVideoBuffer = (uint8_t*)rgb;
 }
 
-void Kinect::depthCallback(freenect_device *dev, void *rgb, uint32_t timestamp)
+void Kinect::depthCallback(freenect_device *dev, void *depth, uint32_t timestamp)
 {
+    QMutexLocker locker(&m_mutex);
+    uint16_t* u_depth = (uint16_t*)depth;
+    uint8_t val;
+    for (int i=0; i < FREENECT_FRAME_PIX; i++) {
+	val = u_depth[i];
+	m_midDepth[3*i+0] = 128;
+	m_midDepth[3*i+1] = val;
+	m_midDepth[3*i+2] = 128;
+    }
+
+
 }
 
 
@@ -66,7 +82,7 @@ void Kinect::video_cb(freenect_device *dev, void *rgb, uint32_t timestamp)
 
 void Kinect::depth_cb(freenect_device *dev, void *v_depth, uint32_t timestamp)
 {
-    qDebug() << Q_FUNC_INFO;
+    m_instance->depthCallback(dev, v_depth, timestamp);
 }
 
 void Kinect::run()

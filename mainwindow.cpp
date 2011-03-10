@@ -9,7 +9,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->verticalLayout->addWidget(m_glwidget);
-    //setLayout(ui->horizontalLayoutWidget);
 
 }
 
@@ -24,6 +23,10 @@ void MainWindow::start()
 }
 
 void MainWindow::on_pushButton_clicked()
+{
+}
+
+void MainWindow::on_captureButton_clicked()
 {
     m_glwidget->start();
 }

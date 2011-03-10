@@ -27,6 +27,7 @@ private:
     GLuint m_rgbTexture;
     Kinect* m_kinect;
     GLuint gl_rgb_tex;
+    GLuint gl_depth_tex;
 
     QTimer* m_animationTimer;
 
