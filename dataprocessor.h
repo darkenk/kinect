@@ -13,7 +13,12 @@ public:
 
     uint8_t* processImage(uint8_t* image);
 
+    void setThresholdLevel(int thresholdLevel) { m_thresholdLevel = thresholdLevel; }
+    int thresholdLevel() { return m_thresholdLevel; }
+    int nonZerosPixels() { return m_nonZerosPixels; }
+
 signals:
+    void nonZerosPixelsChanged(int nonZerosPixels);
 
 public slots:
 
@@ -28,6 +33,9 @@ private:
     IplImage* m_grayResultImage;
 
     bool m_firstRun;
+
+    int m_thresholdLevel;
+    int m_nonZerosPixels;
 
 };
 

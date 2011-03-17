@@ -25,9 +25,17 @@ private slots:
 
     void on_ledComboBox_currentIndexChanged(int index);
 
+    void on_thresholdLevel_valueChanged(int value);
+
+    void on_alarmLevel_valueChanged(int value);
+
+    void onNonZeroPixelChanged(int pixels);
+
 private:
     Ui::MainWindow *ui;
     WidgetGL* m_glwidget;
+
+    int m_alarmLevel;
 };
 
 #endif // MAINWINDOW_H

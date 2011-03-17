@@ -13,6 +13,8 @@ WidgetGL::WidgetGL(QWidget *parent) :
     connect(m_animationTimer, SIGNAL(timeout()), this, SLOT(animate()));
     m_animationTimer->start(25);
     setFixedSize(1280, 480);
+
+    connect(m_dataProcessor, SIGNAL(nonZerosPixelsChanged(int)), this, SIGNAL(nonZeroPixelChanged(int)));
 }
 
 WidgetGL::~WidgetGL()

@@ -15,6 +15,8 @@ DataProcessor::DataProcessor(QObject *parent) :
     m_grayResultImage = cvCreateImage(cvSize(640, 480), IPL_DEPTH_8U, 1);
 
     m_firstRun = true;
+    m_thresholdLevel = 40;
+    m_nonZerosPixels = 0;
 }
 
 DataProcessor::~DataProcessor()
@@ -27,8 +29,6 @@ DataProcessor::~DataProcessor()
 
 uint8_t* DataProcessor::processImage(uint8_t *image)
 {
-//    IplImage* cvImage = cvCreateImage(cvSize(640, 480), m_rgbDepth, m_rgbChannels);
-//    cvSetData(cvImage, image, cvImage->widthStep);
     cvSetData(m_rgbResultImage, image, m_rgbResultImage->widthStep);
     //swap the images
     IplImage* tmp = m_grayPrevImage;
@@ -43,14 +43,11 @@ uint8_t* DataProcessor::processImage(uint8_t *image)
     }
 
     cvAbsDiff(m_grayPrevImage, m_grayCurrentImage, m_grayResultImage);
-    cvThreshold(m_grayResultImage, m_grayResultImage, 40, 255, CV_THRESH_BINARY);
-    int nonZero = cvCountNonZero(m_grayResultImage);
-
+    cvThreshold(m_grayResultImage, m_grayResultImage, m_thresholdLevel, 255, CV_THRESH_BINARY);
+    m_nonZerosPixels = cvCountNonZero(m_grayResultImage);
     cvAddS(m_rgbResultImage, cvScalar(255, 0, 0, 0), m_rgbResultImage, m_grayResultImage);
-    //cvSmooth(cvImage, m_rgbResultImage);
-    //cvCanny(m_rgbResultImage, m_rgbResultImage, 10, 100);
-//    cvReleaseImageHeader(&cvImage);
-    qDebug() << Q_FUNC_INFO << " non zero elements " << nonZero;
+
+    emit nonZerosPixelsChanged(m_nonZerosPixels);
     return (uint8_t*)m_rgbResultImage->imageData;
 }
 

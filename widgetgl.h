@@ -15,6 +15,12 @@ public:
     virtual ~WidgetGL();
     void start();
 
+    void setThresholdLevel(int thresholdLevel) { m_dataProcessor->setThresholdLevel(thresholdLevel); }
+    int thresholdLevel() { return m_dataProcessor->thresholdLevel(); }
+
+signals:
+    void nonZeroPixelChanged(int nonZeroPixels);
+
 protected:
     void paintGL();
     void initializeGL();

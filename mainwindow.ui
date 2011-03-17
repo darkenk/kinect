@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>1280</width>
-    <height>640</height>
+    <height>700</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>1280</width>
-    <height>640</height>
+    <height>700</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>1280</width>
-    <height>640</height>
+    <height>700</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -40,9 +40,9 @@
    <widget class="QPushButton" name="captureButton">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>550</y>
-      <width>471</width>
+      <width>121</width>
       <height>28</height>
      </rect>
     </property>
@@ -53,9 +53,9 @@
    <widget class="QComboBox" name="ledComboBox">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>550</y>
-      <width>231</width>
+      <x>10</x>
+      <y>580</y>
+      <width>101</width>
       <height>27</height>
      </rect>
     </property>
@@ -94,6 +94,87 @@
       <string>LED_BLINK_RED_YELLOW</string>
      </property>
     </item>
+   </widget>
+   <widget class="QLCDNumber" name="nonZerosPixelsLCD">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>570</y>
+      <width>111</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>550</y>
+      <width>121</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Non zeros pixels</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="thresholdLevel">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>570</y>
+      <width>131</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>550</y>
+      <width>131</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Threshold level</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="alarmLevel">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>570</y>
+      <width>111</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>550</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Alarm level</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
