@@ -13,14 +13,16 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     widgetgl.cpp \
-    kinect.cpp
+    kinect.cpp \
+    dataprocessor.cpp
 
 HEADERS  += mainwindow.h \
     widgetgl.h \
-    kinect.h
+    kinect.h \
+    dataprocessor.h
 
 CONFIG += link_pkgconfig
-PKGCONFIG += libfreenect
+PKGCONFIG += libfreenect opencv
 
 
 FORMS    += mainwindow.ui

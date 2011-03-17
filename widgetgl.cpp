@@ -4,7 +4,8 @@
 
 WidgetGL::WidgetGL(QWidget *parent) :
     QGLWidget(parent),
-    m_animationTimer(new QTimer)
+    m_animationTimer(new QTimer),
+    m_dataProcessor(new DataProcessor)
 {
     m_kinect = Kinect::instance();
 
@@ -35,7 +36,8 @@ void WidgetGL::paintGL()
 
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, gl_rgb_tex);
-    glTexImage2D(GL_TEXTURE_2D, 0, 3, 640, 480, 0, GL_RGB, GL_UNSIGNED_BYTE, rgb_front);
+    uint8_t* rgbImage = m_dataProcessor->processImage(rgb_front);
+    glTexImage2D(GL_TEXTURE_2D, 0, 3, 640, 480, 0, GL_RGB, GL_UNSIGNED_BYTE, rgbImage);
 
     glBegin(GL_TRIANGLE_FAN);
     glColor4f(255.0f, 255.0f, 255.0f, 255.0f);

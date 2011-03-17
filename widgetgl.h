@@ -4,6 +4,7 @@
 #include <QGLWidget>
 #include <QTimer>
 #include "kinect.h"
+#include "dataprocessor.h"
 
 class WidgetGL : public QGLWidget
 {
@@ -30,6 +31,7 @@ private:
     GLuint gl_depth_tex;
 
     QTimer* m_animationTimer;
+    DataProcessor* m_dataProcessor;
 
 };
 

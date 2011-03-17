@@ -21,7 +21,7 @@ Kinect::Kinect(QObject *parent) :
     int devices = freenect_num_devices(m_ctx);
     qDebug() << "Number of devices " << devices;
 
-    Q_ASSERT(freenect_open_device(m_ctx, &m_dev, 1) >= 0);
+    Q_ASSERT(freenect_open_device(m_ctx, &m_dev, 0) >= 0);
 
     m_backVideoBuffer = new uint8_t[640*480*3];
     m_midVideoBuffer = new uint8_t[640*480*3];
